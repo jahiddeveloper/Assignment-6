@@ -6,7 +6,7 @@ const loadCategories = () => {
 
 const activeRemove = () => {
   const otherTreeBtn = document.querySelectorAll(".other-tree-btn");
-  otherTreeBtn.forEach(btn => btn.classList.remove("active"))
+  otherTreeBtn.forEach((btn) => btn.classList.remove("active"));
 };
 
 const loadIdWord = (id) => {
@@ -19,6 +19,43 @@ const loadIdWord = (id) => {
       clickBtn.classList.add("active");
       displayIdWord(json.plants);
     });
+};
+
+const loadDetail = async (id) => {
+  const url = `https://openapi.programming-hero.com/api/plant/${id}`;
+  const res = await fetch(url);
+  const info = await res.json();
+  displayDetail(info.plants);
+};
+
+const displayDetail = (infos) => {
+  const infoBtn = document.getElementById("info-container");
+  infoBtn.innerHTML = `
+  <h2 class="text-xl font-bold mb-4">${infos.name}</h2>
+        <div class="w-full h-60">
+
+            <img
+            src="${infos.image}"
+            alt="Mango"
+            class="w-full h-60 object-cover object-center rounded-lg"
+          />
+        </div>
+
+        <p class="font-bold mt-3">
+          Category : <span class="font-light">${infos.category}</span>
+        </p>
+        <p class="font-bold mt-3">
+          Price : <span class="font-light"><span>৳ </span> ${infos.price}</span>
+        </p>
+        <p class="font-bold mt-3">
+          Description :
+          <span class="font-light"
+            >${infos.description}</span
+          >
+        </p>
+        </div>
+  `;
+  document.getElementById("info_modal").showModal();
 };
 
 const displayIdWord = (words) => {
@@ -37,7 +74,7 @@ const displayIdWord = (words) => {
             />
           </div>
 
-          <h2 class="font-bold text-lg mt-3 mb-2">${word.name}</h2>
+          <h2 onclick="loadDetail(${word.id})" class="font-bold text-lg mt-3 mb-2 cursor-pointer">${word.name}</h2>
           <p class="text-[#1f2937] text-justify">
             ${word.description}
           </p>
@@ -48,7 +85,7 @@ const displayIdWord = (words) => {
             >
             <p class="font-bold">৳<span>${word.price}</span></p>
           </div>
-          <button class="btn mt-4 w-full text-white bg-[#15803d] hover:bg-[#27af59] border-none rounded-3xl">Success</button>
+          <button class="btn mt-4 w-full text-white bg-[#15803d] hover:bg-[#27af59] border-none rounded-3xl">Add to Cart</button>
         </div>
     `;
 
@@ -94,7 +131,7 @@ const displayCart = (carts) => {
             />
           </div>
 
-          <h2 class="font-bold text-lg mt-3 mb-2">${cart.name}</h2>
+          <h2 onclick="loadDetail(${cart.id})" class="font-bold text-lg mt-3 mb-2 cursor-pointer">${cart.name}</h2>
           <p class="text-[#1f2937] text-justify">
             ${cart.description}
           </p>
@@ -105,7 +142,7 @@ const displayCart = (carts) => {
             >
             <p class="font-bold">৳<span>${cart.price}</span></p>
           </div>
-          <button class="btn mt-4 w-full text-white bg-[#15803d] hover:bg-[#27af59] border-none rounded-3xl">Success</button>
+          <button class="btn mt-4 w-full text-white bg-[#15803d] hover:bg-[#27af59] border-none rounded-3xl">Add to Cart</button>
         </div>
     `;
 
