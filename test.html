@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="grid grid-cols-3 gap-4 p-4">
+  <!-- Product Card -->
+  <div class="bg-white shadow-md rounded-lg p-4 text-center">
+    <h2 class="font-bold text-lg">Apple</h2>
+    <p class="text-gray-600">Price: $10</p>
+    <button 
+      onclick="addToCart('Apple', 10)" 
+      class="mt-2 bg-blue-500 text-white px-4 py-2 rounded">
+      Add to Cart
+    </button>
+  </div>
+
+  <div class="bg-white shadow-md rounded-lg p-4 text-center">
+    <h2 class="font-bold text-lg">Orange</h2>
+    <p class="text-gray-600">Price: $15</p>
+    <button 
+      onclick="addToCart('Orange', 15)" 
+      class="mt-2 bg-blue-500 text-white px-4 py-2 rounded">
+      Add to Cart
+    </button>
+  </div>
+
+  <div class="bg-white shadow-md rounded-lg p-4 text-center">
+    <h2 class="font-bold text-lg">Mango</h2>
+    <p class="text-gray-600">Price: $20</p>
+    <button 
+      onclick="addToCart('Mango', 20)" 
+      class="mt-2 bg-blue-500 text-white px-4 py-2 rounded">
+      Add to Cart
+    </button>
+  </div>
+</div>
+
+<!-- Cart Section -->
+<div class="p-4 bg-gray-100 rounded-lg max-w-md mx-auto mt-6">
+  <h2 class="font-bold text-xl mb-4">🛒 Your Cart</h2>
+  <ul id="cartItems" class="space-y-2"></ul>
+  <div class="mt-4 font-bold text-lg">Total: $<span id="cartTotal">0</span></div>
+</div>
+
+<script>
+  let cart = [];
+
+  function addToCart(name, price) {
+    const existingItem = cart.find(item => item.name === name);
+    if (existingItem) {
+      existingItem.quantity++;
+    } else {
+      cart.push({ name, price, quantity: 1 });
+    }
+    renderCart();
+  }
+
+  function removeFromCart(name) {
+    cart = cart.filter(item => item.name !== name);
+    renderCart();
+  }
+
+  function renderCart() {
+    const cartItems = document.getElementById("cartItems");
+    const cartTotal = document.getElementById("cartTotal");
+    cartItems.innerHTML = "";
+    let total = 0;
+
+    cart.forEach(item => {
+      total += item.price * item.quantity;
+      const li = document.createElement("li");
+      li.className = "flex justify-between items-center bg-white p-2 rounded shadow";
+      li.innerHTML = `
+        <span>${item.name} - $${item.price} × ${item.quantity}</span>
+        <button onclick="removeFromCart('${item.name}')" class="text-red-500 font-bold">✖</button>
+      `;
+      cartItems.appendChild(li);
+    });
+
+    cartTotal.textContent = total;
+  }
+</script>
+
+</body>
+</html>

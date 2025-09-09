@@ -10,6 +10,7 @@ const activeRemove = () => {
 };
 
 const loadIdWord = (id) => {
+  spinner(true);
   const url = `https://openapi.programming-hero.com/api/category/${id}`;
   fetch(url)
     .then((res) => res.json())
@@ -18,6 +19,7 @@ const loadIdWord = (id) => {
       const clickBtn = document.getElementById(`tree-btn-${id}`);
       clickBtn.classList.add("active");
       displayIdWord(json.plants);
+      spinner(false);
     });
 };
 
@@ -85,7 +87,7 @@ const displayIdWord = (words) => {
             >
             <p class="font-bold">৳<span>${word.price}</span></p>
           </div>
-          <button class="btn mt-4 w-full text-white bg-[#15803d] hover:bg-[#27af59] border-none rounded-3xl">Add to Cart</button>
+          <button onclick="addToCart${word.id}" class="btn mt-4 w-full text-white bg-[#15803d] hover:bg-[#27af59] border-none rounded-3xl active-btn">Add to Cart</button>
         </div>
     `;
 
@@ -109,10 +111,22 @@ const displayCategories = (categories) => {
 
 loadCategories();
 
+const spinner = (status) => {
+  if (status === true) {
+    document.getElementById("spinner").classList.remove("hidden");
+    document.getElementById("cart-container").classList.add("hidden");
+  } else {
+    document.getElementById("cart-container").classList.remove("hidden");
+    document.getElementById("spinner").classList.add("hidden");
+  }
+};
+
 const loadCart = () => {
+  spinner(true);
   fetch("https://openapi.programming-hero.com/api/plants")
     .then((res) => res.json())
     .then((json) => displayCart(json.plants));
+  spinner(false);
 };
 
 const displayCart = (carts) => {
@@ -142,7 +156,7 @@ const displayCart = (carts) => {
             >
             <p class="font-bold">৳<span>${cart.price}</span></p>
           </div>
-          <button class="btn mt-4 w-full text-white bg-[#15803d] hover:bg-[#27af59] border-none rounded-3xl">Add to Cart</button>
+          <button onclick="addToCart${cart.id}" class="btn mt-4 w-full text-white bg-[#15803d] hover:bg-[#27af59] border-none rounded-3xl active-btn">Add to Cart</button>
         </div>
     `;
 
