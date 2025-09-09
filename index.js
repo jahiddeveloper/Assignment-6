@@ -151,7 +151,7 @@ const displayCart = (carts) => {
           </p>
           <div class="flex justify-between items-center mt-2">
             <span
-              class="btn text-[#15803d] bg-[#facc15] rounded-3xl px-5 font-semibold border-none hover:bg-[#fcd435] hover:scale-105 transition transform duration-300"
+              class="btn text-[#15803d] bg-[#facc15] rounded-3xl px-5 font-semibold border-none hover:bg-[#fcd435]"
               >${cart.category}</span
             >
             <p class="font-bold">৳<span>${cart.price}</span></p>

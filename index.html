@@ -109,7 +109,7 @@
       <span class="loading loading-dots loading-xl"></span>
     </section>
 
-    <section class="flex flex-col md:flex-row min-h-screen mx-10">
+    <section class="flex flex-col md:flex-row mx-10">
       <!-- Left Sidebar / Menu -->
       <div class="md:w-1/6 w-full p-4 flex flex-col">
         <h2 class="text-2xl font-bold mb-4">Categories</h2>
@@ -124,7 +124,7 @@
 
       <!-- Right Sidebar / History -->
       <div
-        class="w-full md:w-1/6 p-4 shadow-lg rounded-lg mt-10 md:mt-0 bg-white h-auto md:h-[100vh] mx-auto md:mx-0 md:ml-9"
+        class="w-full md:w-1/6 p-4 shadow-lg rounded-lg mt-10 md:mt-0 bg-white  mx-auto md:mx-0 md:ml-9"
       >
         <h2 class="text-xl font-bold mb-3 text-center md:text-left">
           Your Cart
@@ -152,11 +152,15 @@
       </dialog>
     </section>
 
-    <section class="mt-25">
+    <section class="mt-25 mb-25">
       <h2 class="text-3xl font-bold text-center">About the Campaign</h2>
 
-      <div class="flex flex-col md:flex-row justify-between items-center mt-10 mx-0-auto md:px-85 justify-items-center">
-        <div class="w-full md:h-[530px] md:w-[530px] flex justify-items-center px-4">
+      <div
+        class="flex flex-col md:flex-row justify-between items-center mt-10 mx-0-auto md:px-85 justify-items-center"
+      >
+        <div
+          class="w-full md:h-[530px] md:w-[530px] flex justify-items-center px-4"
+        >
           <img src="./assets/about.png" alt="" />
         </div>
         <div class="md:w-[530px] md:mr-10 mt-4 px-3">
@@ -172,10 +176,55 @@
             <li>Improvement of air quality</li>
             <li>Support for local communities</li>
           </ul>
-
         </div>
       </div>
     </section>
+
+    <section class="py-7 px-7 md:py-25 md:px-33 bg-[#cff0dc]">
+      <h2 class="text-3xl font-bold text-center">Our Impact</h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 mt-10">
+        <div class="bg-white p-10 rounded-lg shadow-lg cursor-pointer hover:scale-107 transition transform duration-300">
+          <p class="text-[#15803d] font-bold text-center text-2xl mb-3">500K+</p>
+          <p class="text-center">Trees Planted</p>
+        </div>
+        <div class="bg-white p-10 rounded-lg shadow-lg cursor-pointer hover:scale-107 transition transform duration-300">
+          <p class="text-[#15803d] font-bold text-center text-2xl mb-3">120+</p>
+          <p class="text-center">Communities Involved</p>
+        </div>
+        <div class="bg-white p-10 rounded-lg shadow-lg cursor-pointer hover:scale-107 transition transform duration-300">
+          <p class="text-[#15803d] font-bold text-center text-2xl mb-3">30+</p>
+          <p class="text-center">Countries Reached</p>
+        </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="bg-[#166534] py-12 md:py-25">
+      <h2 class="text-xl flex justify-center items-center font-bold text-white text-center">Plant a Tree Today</h2>
+      <div class="text-center mx-auto md:w-[650px] mt-10 p-10 bg-[#15803d] rounded-2xl shadow-3xl">
+        <form class="" action="">
+          <input class="w-full md:w-125 p-3 bg-white border-none mb-3 rounded-lg outline-none" type="text" placeholder="Your Name">
+          <br>
+          <input class="w-full md:w-125 p-3 bg-white border-none rounded-lg outline-none" type="email" name="" id="" placeholder="Your Email Address">
+          <br>
+          <select class="select select-lg w-full md:w-125 bg-white border-none mt-3 rounded-lg">
+            <option disabled selected>Number of Trees</option>
+            <option>1 Tree - $5</option>
+            <option>5 Trees - $25</option>
+            <option>10 Trees - $50</option>
+          </select>
+          <br>
+          <input class="p-3 cursor-pointer w-full md:w-125 font-semibold text-[#15803d] bg-[#facc15] hover:bg-[#fad648] hover:scale-105 transition transform duration-300 border-none mt-8 rounded-3xl" type="submit" value="Donate Now">
+        </form>
+      </div>
+    </section>
+
+
+
+    <footer class="py-6 bg-[#14532d]">
+      <p class="font-bold text-white text-center">© 2025 Green Earth. All Rights Reserved.</p>
+    </footer>
 
     <script src="index.js"></script>
   </body>
